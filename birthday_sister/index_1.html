@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给漂亮姐姐的生日祝福</title>
+
+    <!-- 引入外部资源 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- 引入自定义样式 -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 配置Tailwind自定义颜色（和CSS统一主题） -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        birthday: {
+                            pink: '#FF7EB9',
+                            purple: '#A78BFA',
+                            gold: '#FBBF24',
+                            blue: '#60A5FA'
+                        }
+                    },
+                    fontFamily: {
+                        cute: ['"Comic Sans MS"', '"Marker Felt"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-birthday-purple/20 to-birthday-pink/20 overflow-x-hidden font-cute">
+    <!-- 背景音乐（主页面） -->
+    <audio id="homeMusic" loop>
+        <source src="https://example.com/birthday-song.mp3" type="audio/mpeg"> <!-- 替换成你的音频链接 -->
+    </audio>
+
+    <!-- 顶部标题区 -->
+    <header class="relative pt-16 pb-8 px-4 text-center">
+        <h1 class="text-[clamp(2rem,5vw,4rem)] font-bold text-white text-shadow-gold mb-4 animate-pulse-slow">
+            生日快乐，亲爱的姐姐！
+        </h1>
+        <p class="text-[clamp(1rem,2vw,1.5rem)] text-white text-shadow max-w-2xl mx-auto">
+            愿今天充满欢笑，愿所有梦想都能实现
+        </p>
+
+        <!-- 动态气球装饰 -->
+        <div class="absolute top-0 left-10 w-16 h-16 bg-birthday-pink rounded-full animate-float"
+            style="animation-delay: 0s;"></div>
+        <div class="absolute top-0 right-20 w-20 h-20 bg-birthday-blue rounded-full animate-float"
+            style="animation-delay: 1s;"></div>
+        <div class="absolute top-10 left-1/4 w-14 h-14 bg-birthday-gold rounded-full animate-float"
+            style="animation-delay: 2s;"></div>
+    </header>
+
+    <main class="container mx-auto px-4 pb-20">
+        <!-- 1. 生日蛋糕区 -->
+        <section class="text-center my-12">
+            <div class="inline-block relative">
+                <img src="https://picsum.photos/id/292/600/400" alt="精美的生日蛋糕" class="rounded-lg shadow-2xl max-w-full h-auto"> <!-- 替换成你的蛋糕图 -->
+                <div
+                    class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-birthday-gold text-white py-2 px-6 rounded-full shadow-lg">
+                    <i class="fa fa-cake mr-2"></i>第XX个精彩的生日 <!-- 替换成姐姐的年龄 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 照片墙区 -->
+        <section class="my-16">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-10 text-white text-shadow">
+                <i class="fa fa-photo mr-3"></i>我们的珍贵回忆
+            </h2>
+
+            <div class="relative h-[500px] max-w-5xl mx-auto">
+                <!-- 照片1 -->
+                <div class="photo-frame absolute top-0 left-10 w-48 md:w-64" style="--rotation: -5deg;">
+                    <img src="https://picsum.photos/id/64/300/400" alt="和姐姐的合照" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
+                </div>
+                <!-- 照片2 -->
+                <div class="photo-frame absolute top-40 right-20 w-56 md:w-72" style="--rotation: 3deg;">
+                    <img src="https://picsum.photos/id/26/350/300" alt="姐姐的开心瞬间" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
+                </div>
+                <!-- 照片3 -->
+                <div class="photo-frame absolute bottom-40 left-1/3 w-48 md:w-64" style="--rotation: -2deg;">
+                    <img src="https://picsum.photos/id/91/300/400" alt="一起旅行的照片" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
+                </div>
+                <!-- 照片4 -->
+                <div class="photo-frame absolute bottom-10 right-10 w-52 md:w-68" style="--rotation: 5deg;">
+                    <img src="https://picsum.photos/id/65/320/400" alt="姐姐的美丽瞬间" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 新增：视频播放区（支持你的视频） -->
+        <section class="my-16 max-w-4xl mx-auto">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-10 text-white text-shadow">
+                <i class="fa fa-video-camera mr-3"></i>视频
+            </h2>
+
+            <!-- 视频容器（加生日主题边框） -->
+            <div class="bg-white p-4 rounded-xl shadow-2xl border-4 border-birthday-pink/50">
+                <!-- 视频播放：poster是视频未播放时的封面图 -->
+                <video controls poster="https://picsum.photos/id/237/800/450" >     <!--替换成视频封面（可选 -->
+                    class="w-full rounded-lg"
+                    preload="metadata" <!-- 优化加载速度 -->
+                    >
+                    <source src="https://example.com/special-memory.mp4" type="video/mp4"> <!-- 替换成你的视频链接（本地/腾讯云链接） -->
+                    你的浏览器不支持视频播放，请更新浏览器后重试~
+                </video>
+                <p class="text-center mt-3 text-gray-600">
+                    <i class="fa fa-play-circle text-birthday-pink"></i> 点击播放回忆
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. 新增：跳转歌曲页面的按钮 -->
+        <section class="my-16 text-center">
+            <a href="song_page.html"
+                class="inline-block bg-gradient-to-r from-birthday-pink to-birthday-purple text-white py-4 px-10 rounded-full shadow-xl text-[clamp(1.2rem,2vw,1.5rem)] font-bold hover:scale-105 transition-all duration-300">
+                <i class="fa fa-music mr-2"></i>点击收听我给你唱的歌    
+            </a>
+            <p class="text-white mt-4 text-shadow">专属歌曲，只为你唱 ✨</p>
+        </section>
+
+        <!-- 5. 祝福信息区 -->
+        <section class="my-16 max-w-3xl mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-6 text-birthday-purple">
+                <i class="fa fa-heart mr-3"></i>给姐姐的祝福
+            </h2>
+
+            <div class="text-[clamp(1rem,2vw,1.25rem)] leading-relaxed space-y-4 text-gray-700">
+                <p>亲爱的姐姐：</p>
+                <p>今天是你的生日，翻着我们的照片、看着一起拍的视频，突然觉得时间好快——我们一起吵过、笑过，你总是在我需要时站在我身边，像小太阳一样温暖。</p>
+                <p>新的一岁，我不奢求太多，只希望你每天都能睡个好觉、吃喜欢的食物、做让自己开心的事，健康和快乐永远排在第一！</p>
+                <p>对了，记得点上面的按钮，有我给你唱的歌，虽然不算专业，但每一句都是真心～</p>
+                <p class="text-right mt-8">永远爱你的弟弟</p>
+                <p class="text-right text-sm opacity-75">202X年X月X日 <!-- 替换成生日当天日期 --></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 text-white/70">
+        <p>这份祝福，只为最特别的你 <i class="fa fa-heart text-birthday-pink animate-pulse"></i></p>
+    </footer>
+
+    <!-- 引入自定义交互逻辑 -->
+    <script src="script.js"></script>
+</body>
+
+</html>

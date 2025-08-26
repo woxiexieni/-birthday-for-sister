@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>歌 · 形容</title>
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9f0ff;
+            font-family: 'Comic Sans MS', 'Marker Felt', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-y: auto;
+            /* 允许页面滚动 */
+        }
+
+        /* 粒子背景容器（占满全屏） */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            /* 确保在内容下方 */
+        }
+
+        /* 内容容器（确保粒子背景不遮挡内容） */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            /* 内容在粒子上方 */
+            width: 100%;
+            max-width: 768px;
+            padding: 2rem;
+        }
+
+        /* 标题样式 */
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: #333;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 126, 185, 0.6);
+            animation: text-glow 2s infinite alternate;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: #666;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        /* 音频播放器 */
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 1rem auto;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(255, 126, 185, 0.2);
+            display: block;
+            /* 确保音频控件占满父容器 */
+        }
+
+        /* 歌词容器核心样式 */
+        .lyric-container {
+            max-width: 600px;
+            width: 100%;
+            height: 300px;
+            overflow-y: auto;
+            /* 必须保留，让滚动条可交互 */
+            scroll-behavior: smooth;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px rgba(255, 126, 185, 0.2);
+            border: 2px dashed #A78BFA;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1rem auto;
+        }
+
+        .lyric-container p {
+            text-align: center;
+            margin: 0.8rem 0;
+            color: #666;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            transition: all 0.3s ease;
+        }
+
+        .lyric-active {
+            color: #FF7EB9;
+            font-weight: bold;
+            transform: scale(1.05);
+        }
+
+        /* 文字发光动画 */
+        @keyframes text-glow {
+            to {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 1),
+                    0 0 40px rgba(255, 126, 185, 0.8);
+            }
+        }
+    </style>
+
+    <!-- 粒子背景库（必须引入） -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+
+<body>
+    <!-- 粒子背景容器 -->
+    <div id="particles-js"></div>
+
+    <!-- 内容容器（隔离粒子背景） -->
+    <div class="content-wrapper">
+        <!-- 顶部标题 -->
+        <header>
+            <h1>歌 · 形容</h1>
+            <p>希望我的歌声，能住进你的心里</p>
+        </header>
+
+        <!-- 音频播放器 -->
+        <div class="audio-wrapper">
+            <audio id="songAudio" controls preload="metadata">
+                <!-- 🔥 替换为真实音频地址！！ -->
+                <!-- 本地文件示例：src="your-audio.mp3" -->
+                <!-- 在线文件示例：src="https://www.w3school.com.cn/i/horse.ogg" -->
+                <source src="https://www.w3school.com.cn/i/horse.ogg" type="audio/ogg" />
+                你的浏览器不支持音频播放，请更新浏览器~
+            </audio>
+        </div>
+
+        <!-- 歌词容器 -->
+        <div class="lyric-container" id="lyricContainer"></div>
+    </div>
+
+    <!-- 交互逻辑 -->
+    <script>
+        // 沈以诚《形容》正确歌词+时间戳（根据实际音频调整时间）
+        const lyrics = [
+            { time: 0, text: "这是前奏～" },
+            { time: 8.5, text: "形容 - 沈以诚" },
+            { time: 13.2, text: "就像是那 灰色天空中的小雨" },
+            { time: 18.0, text: "下下停停 不动声色淋湿土地" },
+            { time: 22.7, text: "尽管总是阴晴不定" },
+            { time: 27.4, text: "但偶尔也会闪出星星" },
+            { time: 32.1, text: "这都是形容你的眼睛" },
+            { time: 36.8, text: "就像是那 古老城堡里的油画" },
+            { time: 41.5, text: "突然抬头 定格在黄昏的晚霞" },
+            { time: 46.2, text: "远看一片苍苍蒹葭" },
+            { time: 50.9, text: "近处抚摸软似棉花" },
+            { time: 55.6, text: "这都是形容你的长发" },
+            { time: 60.3, text: "原谅我不可自拔" },
+            { time: 65.0, text: "可能不经意看你一眼" },
+            { time: 69.7, text: "百米冲刺都会停下" },
+            { time: 74.4, text: "只恨科技不够发达" },
+            { time: 79.1, text: "逆着时光回去陪你从小长大" },
+            { time: 83.8, text: "风里还没有细沙" },
+            { time: 88.5, text: "不切实际的想法" },
+            { time: 93.2, text: "就像是那 错综复杂的小枝丫" },
+            { time: 97.9, text: "过去未来 冥冥中对悠长宿命" },
+            { time: 102.6, text: "微妙地潜移默化" },
+            { time: 107.3, text: "很细腻 不年轻" },
+            { time: 112.0, text: "想轻轻把它抚平" },
+            { time: 116.7, text: "这是形容你的手掌心" },
+            { time: 121.4, text: "原谅我不可自拔" },
+            { time: 126.1, text: "可能不经意看你一眼" },
+            { time: 130.8, text: "心里石头都会落下" },
+            { time: 135.5, text: "只恨科技不够发达" },
+            { time: 140.2, text: "逆着时光回去陪你从小长大" },
+            { time: 144.9, text: "风里还没有细沙" },
+            { time: 149.6, text: "地球还没有老化" },
+            { time: 154.3, text: "原谅我不可自拔" },
+            { time: 159.0, text: "可能不经意看你一眼" },
+            { time: 163.7, text: "心里石头都会落下" },
+            { time: 168.4, text: "只恨科技不够发达" },
+            { time: 173.1, text: "逆着时光回去陪你从小长大" },
+            { time: 177.8, text: "风里还没有细沙" },
+            { time: 182.5, text: "不切实际的想法" },
+            { time: 187.2, text: "原谅我不可自拔" },
+            { time: 191.9, text: "可能不经意看你一眼" },
+            { time: 196.6, text: "百米冲刺都会停下" },
+            { time: 201.3, text: "只恨科技不够发达" },
+            { time: 206.0, text: "逆着时光回去陪你从小长大" },
+            { time: 210.7, text: "风里还没有细沙" },
+            { time: 215.4, text: "地球还没有老化" },
+            { time: 220.1, text: "不切实际的想法" }
+        ];
+
+        // DOM 元素
+        const audio = document.getElementById('songAudio');
+        const lyricContainer = document.getElementById('lyricContainer');
+
+        // 渲染歌词到页面
+        function renderLyrics() {
+            lyrics.forEach(lyric => {
+                const p = document.createElement('p');
+                p.textContent = lyric.text;
+                p.dataset.time = lyric.time;
+                lyricContainer.appendChild(p);
+            });
+        }
+
+        // 同步歌词高亮+滚动
+        function syncLyrics() {
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                lyrics.forEach((lyric, index) => {
+                    const p = lyricContainer.children[index];
+                    // 判断当前时间是否匹配歌词区间
+                    const isActive = currentTime >= lyric.time &&
+                        (lyrics[index + 1] ? currentTime < lyrics[index + 1].time : true);
+
+                    if (isActive) {
+                        p.classList.add('lyric-active');
+                        // 滚动到高亮歌词（居中）
+                        p.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    } else {
+                        p.classList.remove('lyric-active');
+                    }
+                });
+            });
+        }
+
+        // 初始化粒子背景（恢复动态效果）
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80 },          // 粒子数量
+                "color": { "value": "#ff7eb9" },    // 粒子颜色
+                "shape": { "type": "circle" },      // 粒子形状（circle/edge/triangle等）
+                "opacity": { "value": 0.5 },        // 粒子透明度
+                "size": { "value": 3 },             // 粒子大小
+                "line_linked": {
+                    "enable": true,                   // 连线效果
+                    "distance": 150,                  // 连线触发距离
+                    "color": "#ff7eb9",               // 连线颜色
+                    "opacity": 0.4,                   // 连线透明度
+                    "width": 1                        // 连线宽度
+                },
+                "move": {
+                    "enable": true,                   // 粒子运动
+                    "speed": 6,                       // 运动速度
+                    "direction": "none",              // 运动方向（none/random/x/y等）
+                    "random": false,                  // 随机运动
+                    "straight": false,                // 直线运动
+                    "out_mode": "out",                // 超出画布后的行为
+                    "attract": {
+                        "enable": false,                // 引力效果
+                        "rotateX": 600,                 // X轴引力
+                        "rotateY": 1200                 // Y轴引力
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",              // 交互检测区域（canvas/document）
+                "events": {
+                    "onhover": {
+                        "enable": true,                 // 悬停交互
+                        "mode": "grab"                  // 悬停模式（grab/bubble/repulse等）
+                    },
+                    "onclick": {
+                        "enable": true,                 // 点击交互
+                        "mode": "push"                  // 点击模式（push/bubble/repulse等）
+                    },
+                    "resize": true                    // 窗口resize时重置
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,                // 引力距离
+                        "line_linked": { "opacity": 1 } // 连线透明度
+                    },
+                    "bubble": {
+                        "distance": 400,                // 气泡距离
+                        "size": 40,                     // 气泡大小
+                        "duration": 2,                  // 气泡持续时间
+                        "opacity": 8,                   // 气泡透明度
+                        "speed": 3                      // 气泡速度
+                    },
+                    "repulse": {
+                        "distance": 200,                // 斥力距离
+                        "duration": 0.4                 // 斥力持续时间
+                    },
+                    "push": { "particles_nb": 4 },    // 点击时推送粒子数量
+                    "remove": { "particles_nb": 2 }   // 点击时移除粒子数量
+                }
+            },
+            "retina_detect": true                 // 视网膜屏适配
+        });
+
+        // 初始化歌词
+        renderLyrics();
+        syncLyrics();
+    </script>
+</body>
+
+</html>
