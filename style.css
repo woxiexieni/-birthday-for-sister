@@ -1,0 +1,141 @@
+/* 1. Tailwind 自定义工具类（主页面+歌曲页面共用） */
+@layer utilities {
+    .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .text-shadow-gold {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FBBF24, 0 0 20px #FBBF24;
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .photo-frame {
+        position: relative;
+        border: 8px solid white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transform: rotate(var(--rotation, 0deg));
+        transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+        transform: rotate(var(--rotation, 0deg)) scale(1.05);
+        z-index: 10;
+    }
+
+    .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background-color: #f44336;
+        animation: confetti 5s ease-in-out infinite;
+        z-index: 9999;
+    }
+
+    /* 歌曲页面：歌词高亮动画 */
+    .lyric-active {
+        color: #FF7EB9;
+        font-weight: bold;
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    }
+}
+
+/* 2. 全局动画定义 */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(1000px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* 3. 歌曲页面专属样式 */
+.song-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 126, 185, 0.2);
+    padding: 2rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    border: 2px dashed #A78BFA;
+}
+
+.song-cover {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 6px solid #FF7EB9;
+    box-shadow: 0 0 20px rgba(255, 126, 185, 0.3);
+}
+
+.lyric-box {
+    height: 300px;
+    overflow-y: auto;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(167, 139, 250, 0.05);
+}
+
+.lyric-box p {
+    margin: 0.8rem 0;
+    text-align: center;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+/* 4. 滚动条美化（歌曲页面歌词区） */
+.lyric-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lyric-box::-webkit-scrollbar-thumb {
+    background: #FF7EB9;
+    border-radius: 4px;
+}
+
+.lyric-box::-webkit-scrollbar-track {
+    background: rgba(167, 139, 250, 0.1);
+}
+
+/* 5. 返回主页面按钮样式 */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #A78BFA;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+    color: #FF7EB9;
+}
