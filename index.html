@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,11 +33,11 @@
         }
     </script>
 </head>
-
 <body class="min-h-screen bg-gradient-to-br from-birthday-purple/20 to-birthday-pink/20 overflow-x-hidden font-cute">
     <!-- 背景音乐（主页面） -->
-    <audio id="homeMusic" loop>
-        <source src="https://example.com/birthday-song.mp3" type="audio/mpeg"> <!-- 替换成你的音频链接 -->
+    <audio id="homeMusic" loop> <!-- 加 controls 能看到播放控件，方便调试 -->
+        <source src="happy-birthday-357371.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放，请更新浏览器~
     </audio>
 
     <!-- 顶部标题区 -->
@@ -63,61 +62,112 @@
         <!-- 1. 生日蛋糕区 -->
         <section class="text-center my-12">
             <div class="inline-block relative">
-                <img src="https://picsum.photos/id/292/600/400" alt="精美的生日蛋糕" class="rounded-lg shadow-2xl max-w-full h-auto"> <!-- 替换成你的蛋糕图 -->
+                
+                <img src="ph12.jpg" alt="精美的生日蛋糕" class="w-3/5 md:w-2/3 lg:w-1/2 max-w-full h-auto mx-auto"> <!-- 替换成你的蛋糕图 -->
                 <div
                     class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-birthday-gold text-white py-2 px-6 rounded-full shadow-lg">
-                    <i class="fa fa-cake mr-2"></i>第XX个精彩的生日 <!-- 替换成姐姐的年龄 -->
+                    <i class="fa fa-cake mr-2"></i>第29个精彩的生日 <!-- 替换成姐姐的年龄 -->
                 </div>
             </div>
         </section>
 
         <!-- 2. 照片墙区 -->
-        <section class="my-16">
-            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-10 text-white text-shadow">
-                <i class="fa fa-photo mr-3"></i>我们的珍贵回忆
-            </h2>
+       
+<!-- 2. 照片墙区（替换后的 Grid 布局，解决堆叠） -->
+<!-- 2. 照片墙区（艺术错落版） -->
+<!-- 2. 照片墙区（手工错落版） -->
+<!-- 2. 照片墙区（规整错落版，避免过度重叠） -->
+<section class="my-16">
+    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-10 text-white text-shadow">
+        <i class="fa fa-photo mr-3"></i>珍贵回忆
+    </h2>
 
-            <div class="relative h-[500px] max-w-5xl mx-auto">
-                <!-- 照片1 -->
-                <div class="photo-frame absolute top-0 left-10 w-48 md:w-64" style="--rotation: -5deg;">
-                    <img src="https://picsum.photos/id/64/300/400" alt="和姐姐的合照" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
-                </div>
-                <!-- 照片2 -->
-                <div class="photo-frame absolute top-40 right-20 w-56 md:w-72" style="--rotation: 3deg;">
-                    <img src="https://picsum.photos/id/26/350/300" alt="姐姐的开心瞬间" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
-                </div>
-                <!-- 照片3 -->
-                <div class="photo-frame absolute bottom-40 left-1/3 w-48 md:w-64" style="--rotation: -2deg;">
-                    <img src="https://picsum.photos/id/91/300/400" alt="一起旅行的照片" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
-                </div>
-                <!-- 照片4 -->
-                <div class="photo-frame absolute bottom-10 right-10 w-52 md:w-68" style="--rotation: 5deg;">
-                    <img src="https://picsum.photos/id/65/320/400" alt="姐姐的美丽瞬间" class="w-full h-full object-cover"> <!-- 替换成你的照片 -->
-                </div>
-            </div>
-        </section>
+    <!-- 网格容器：每行固定4张，间距适中 -->
+    <div class="max-w-6xl mx-auto grid grid-cols-4 gap-4 md:gap-6">
+        <!-- 照片1：带随机偏移和旋转 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform -rotate-2 relative top-[-5px] left-[-3px]">
+            <img src="ph1.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片2：反向旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform rotate-3 relative top-[4px] right-[-2px]">
+            <img src="ph2.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片3：小角度旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform -rotate-1 relative top-[-3px] left-[2px]">
+            <img src="ph3.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片4：平衡旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform rotate-2 relative top-[3px] right-[-4px]">
+            <img src="ph4.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片5：对称旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform rotate-1 relative top-[-2px] left-[-1px]">
+            <img src="ph5.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片6：反向小旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform -rotate-3 relative top-[5px] right-[3px]">
+            <img src="ph6.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片7：轻微旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform rotate-2 relative top-[-4px] left-[3px]">
+            <img src="ph7.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片8：平衡旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform -rotate-1 relative top-[2px] right-[-2px]">
+            <img src="ph8.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片9：随机旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform rotate-3 relative top-[-3px] left-[-2px]">
+            <img src="ph9.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片10：反向旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform -rotate-2 relative top-[3px] right-[-4px]">
+            <img src="ph10.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+        <!-- 照片11：小角度旋转和偏移 -->
+        <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
+                transform rotate-1 relative top-[-5px] left-[1px]">
+            <img src="ph11.jpg" alt="回忆" class="w-full h-full object-cover">
+        </div>
+    </div>
+</section>
 
-        <!-- 3. 新增：视频播放区（支持你的视频） -->
-        <section class="my-16 max-w-4xl mx-auto">
-            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-10 text-white text-shadow">
-                <i class="fa fa-video-camera mr-3"></i>视频
-            </h2>
-
-            <!-- 视频容器（加生日主题边框） -->
-            <div class="bg-white p-4 rounded-xl shadow-2xl border-4 border-birthday-pink/50">
-                <!-- 视频播放：poster是视频未播放时的封面图 -->
-                <video controls poster="https://picsum.photos/id/237/800/450" >     <!--替换成视频封面（可选 -->
-                    class="w-full rounded-lg"
-                    preload="metadata" <!-- 优化加载速度 -->
-                    >
-                    <source src="https://example.com/special-memory.mp4" type="video/mp4"> <!-- 替换成你的视频链接（本地/腾讯云链接） -->
-                    你的浏览器不支持视频播放，请更新浏览器后重试~
-                </video>
-                <p class="text-center mt-3 text-gray-600">
-                    <i class="fa fa-play-circle text-birthday-pink"></i> 点击播放回忆
-                </p>
-            </div>
-        </section>
+    <!-- 3. 新增：视频播放区（修复后） -->
+    <section class="my-16 max-w-4xl mx-auto">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-10 text-white text-shadow">
+            <i class="fa fa-video-camera mr-3"></i>视频
+        </h2>
+    
+        <!-- 视频容器（加生日主题边框） -->
+        <div class="bg-white p-4 rounded-xl shadow-2xl border-4 border-birthday-pink/50">
+            <video id="memoryVideo"   
+                controls
+                poster="https://picsum.photos/id/237/800/450"
+                class="w-full rounded-lg"
+                preload="metadata"
+                playsinline >
+                
+                <source src="202508270924.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，请更新浏览器后重试~
+            </video>
+            <!-- 给文字加点击事件 -->
+            <p class="text-center mt-3 text-gray-600">
+                <i class="fa fa-play-circle text-birthday-pink"></i>
+                <span onclick="playMemoryVideo()">点击播放</span>
+            </p>
+        </div>
+      
+    </section>
 
         <!-- 4. 新增：跳转歌曲页面的按钮 -->
         <section class="my-16 text-center">
@@ -136,11 +186,11 @@
 
             <div class="text-[clamp(1rem,2vw,1.25rem)] leading-relaxed space-y-4 text-gray-700">
                 <p>亲爱的姐姐：</p>
-                <p>今天是你的生日，翻着我们的照片、看着一起拍的视频，突然觉得时间好快——我们一起吵过、笑过，你总是在我需要时站在我身边，像小太阳一样温暖。</p>
-                <p>新的一岁，我不奢求太多，只希望你每天都能睡个好觉、吃喜欢的食物、做让自己开心的事，健康和快乐永远排在第一！</p>
+                <p>你的生日到了，一直没咋认真给你准备过礼物、最近良心发现了，觉得应该好好给你准备一次生日礼物。其实我觉得你为我牺牲了很多，提前下学，把上学的机会留给我。这些年我每年的新衣服都是你给我买的，我经常听我涛哥说，你姐操心太多，又是这个家，又是豪豪，雯雯，又是你。还有我还记得小时候我涛哥给我说过的一句话，有啥想要的，就说，因为你姐想让别人有的东西，你也有，这句话我始终记得。老姐，我比你幸运，因为你是我姐！</p>
+                <p>新的一岁，只希望你每天都能睡个好觉、吃喜欢的食物、做让自己开心的事，健康和快乐永远排在第一！</p>
                 <p>对了，记得点上面的按钮，有我给你唱的歌，虽然不算专业，但每一句都是真心～</p>
                 <p class="text-right mt-8">永远爱你的弟弟</p>
-                <p class="text-right text-sm opacity-75">202X年X月X日 <!-- 替换成生日当天日期 --></p>
+                <p class="text-right text-sm opacity-75">2025年8月29日 <!-- 替换成生日当天日期 --></p>
             </div>
         </section>
     </main>
@@ -148,9 +198,81 @@
     <footer class="text-center py-6 text-white/70">
         <p>这份祝福，只为最特别的你 <i class="fa fa-heart text-birthday-pink animate-pulse"></i></p>
     </footer>
+<script>
+    const homeMusic = document.getElementById('homeMusic');
+    let hasPlayed = false;
 
-    <!-- 引入自定义交互逻辑 -->
-    <script src="script.js"></script>
+    // 方案1：点击页面任意位置触发（优先级最高）
+    document.body.addEventListener('click', () => {
+        if (!hasPlayed) {
+            homeMusic.play().then(() => {
+                hasPlayed = true;
+                console.log('点击触发音乐播放');
+            }).catch(err => {
+                console.log('点击触发仍被拦截（极少发生）', err);
+            });
+        }
+    }, { once: true }); // 只监听第一次点击
+
+    // 方案2：滚动页面20%触发（备用）
+    window.addEventListener('scroll', () => {
+        const scrollRatio = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        if (!hasPlayed && scrollRatio > 0.2) {
+            homeMusic.play().then(() => {
+                hasPlayed = true;
+                console.log('滚动触发音乐播放');
+            }).catch(err => {
+                console.log('滚动触发被拦截，等待点击', err);
+                // （可选）这里可以强制显示播放按钮
+                showPlayButton();
+            });
+        }
+    }, { once: true });
+
+    // 兜底：强制显示播放按钮（浏览器完全拦截时显示）
+    function showPlayButton() {
+        const playBtn = document.createElement('button');
+        playBtn.id = 'forcePlayBtn';
+        playBtn.style = `
+      position: fixed; 
+      bottom: 20px; 
+      right: 20px; 
+      padding: 12px 24px; 
+      background: #FF7EB9; 
+      color: white; 
+      border: none; 
+      border-radius: 20px; 
+      cursor: pointer; 
+      font-family: 'Comic Sans MS';
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      z-index: 9999;
+    `;
+        playBtn.innerHTML = '<i class="fa fa-music"></i> 点我播放生日歌';
+        playBtn.onclick = () => {
+            homeMusic.play();
+            playBtn.remove();
+            hasPlayed = true;
+        };
+        // 检查按钮是否已存在，避免重复创建
+        if (!document.getElementById('forcePlayBtn')) {
+            document.body.appendChild(playBtn);
+        }
+    }
+
+   function playMemoryVideo() {
+        const video = document.getElementById('memoryVideo');
+        if (video) {
+            video.play().then(() => {
+                console.log('视频开始播放，应该有声音了');
+            }).catch(err => {
+                console.log('播放失败，错误信息：', err);
+                alert('浏览器限制自动播放，请点击视频左下角的播放按钮手动播放~');
+            });
+        }
+    }
+</script>
+
+
+<script src="script.js"></script>
 </body>
-
 </html>
