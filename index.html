@@ -77,64 +77,70 @@
 <!-- 2. 照片墙区（艺术错落版） -->
 <!-- 2. 照片墙区（手工错落版） -->
 <!-- 2. 照片墙区（规整错落版，避免过度重叠） -->
+<!-- 2. 照片墙区（修复响应式，手机1列/平板2列/电脑4列） -->
 <section class="my-16">
     <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-10 text-white text-shadow">
         <i class="fa fa-photo mr-3"></i>珍贵回忆
     </h2>
 
-    <!-- 网格容器：每行固定4张，间距适中 -->
-    <div class="max-w-6xl mx-auto grid grid-cols-4 gap-4 md:gap-6">
-        <!-- 照片1：带随机偏移和旋转 -->
+    <!-- 响应式网格：自动适配屏幕 -->
+    <div class="max-w-6xl mx-auto grid 
+                grid-cols-1       
+                md:grid-cols-2    
+                lg:grid-cols-4     
+                gap-4 md:gap-6"> <!-- 间距随屏幕变大 --><!-- 手机:1列 --> <!-- 平板:2列 --> <!-- 电脑:4列 -->
+
+        <!-- 照片1 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform -rotate-2 relative top-[-5px] left-[-3px]">
             <img src="ph1.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片2：反向旋转和偏移 -->
+        <!-- 照片2 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform rotate-3 relative top-[4px] right-[-2px]">
             <img src="ph2.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片3：小角度旋转和偏移 -->
+        <!-- 照片3 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform -rotate-1 relative top-[-3px] left-[2px]">
             <img src="ph3.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片4：平衡旋转和偏移 -->
+        <!-- 照片4 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform rotate-2 relative top-[3px] right-[-4px]">
             <img src="ph4.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片5：对称旋转和偏移 -->
+        <!-- 照片5 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform rotate-1 relative top-[-2px] left-[-1px]">
             <img src="ph5.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片6：反向小旋转和偏移 -->
+        <!-- 照片6 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform -rotate-3 relative top-[5px] right-[3px]">
             <img src="ph6.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片7：轻微旋转和偏移 -->
+        <!-- 照片7 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform rotate-2 relative top-[-4px] left-[3px]">
             <img src="ph7.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片8：平衡旋转和偏移 -->
+        <!-- 照片8 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform -rotate-1 relative top-[2px] right-[-2px]">
             <img src="ph8.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片9：随机旋转和偏移 -->
+        <!-- 照片9 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform rotate-3 relative top-[-3px] left-[-2px]">
             <img src="ph9.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片10：反向旋转和偏移 -->
+        <!-- 照片10 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform -rotate-2 relative top-[3px] right-[-4px]">
             <img src="ph10.jpg" alt="回忆" class="w-full h-full object-cover">
         </div>
-        <!-- 照片11：小角度旋转和偏移 -->
+        <!-- 照片11 -->
         <div class="w-full h-64 md:h-72 overflow-hidden rounded-lg 
                 transform rotate-1 relative top-[-5px] left-[1px]">
             <img src="ph11.jpg" alt="回忆" class="w-full h-full object-cover">
